@@ -7,14 +7,17 @@
 
 // I AM NOT DONE
 
-
-extern {
+extern  {
+    // #[no_mangle]
+    // #[link_name = "Foo::my_demo_function"]
     fn my_demo_function(a:u32) -> u32;
+    // #[no_mangle]
+    // #[link_name = "my_demo_function"]
     fn my_demo_function_alias(a:u32) -> u32;
 }
 
 
-
+// extern crate Foo;
 
 mod Foo{
     fn my_demo_function(a:u32) -> u32 {a}
@@ -24,6 +27,7 @@ mod Foo{
 
 #[cfg(test)]
 mod tests {
+    // extern crate super::Foo;
     use super::*;
 
     #[test]
