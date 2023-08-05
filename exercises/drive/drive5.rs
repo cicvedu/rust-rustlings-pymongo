@@ -6,24 +6,21 @@
 
 
 // I AM NOT DONE
+pub use Foo::my_demo_function;
 
 extern  {
-    // #[no_mangle]
-    // #[link_name = "Foo::my_demo_function"]
+    #[link(name = "my_demo_function")]
+    #[no_mangle]
     fn my_demo_function(a:u32) -> u32;
-    // #[no_mangle]
-    // #[link_name = "my_demo_function"]
+    #[link(name = "my_demo_function")]
+    #[no_mangle]
     fn my_demo_function_alias(a:u32) -> u32;
 }
 
 
-// extern crate Foo;
-
 mod Foo{
-    fn my_demo_function(a:u32) -> u32 {a}
+    pub fn my_demo_function(a:u32) -> u32 {a}
 }
-
-
 
 #[cfg(test)]
 mod tests {
